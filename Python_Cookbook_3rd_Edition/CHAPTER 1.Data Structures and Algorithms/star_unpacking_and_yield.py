@@ -15,3 +15,32 @@ print(phone_numbers)  # ['773-555-1212', '847-555-1212']
 #    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # SyntaxError: multiple starred expressions in assignment
 
+def simple_generator():
+    '''
+        yield split parts, each times call next() only split part
+    '''
+    yield 1  # first time call next() only split 1
+    print('run between 1 & 2 next() call')
+    yield 2
+    yield 3
+
+# 使用生成器
+gen = simple_generator()
+print(next(gen))  # print: 1
+print(next(gen))  # print: 2
+print(next(gen))  # print: 3
+
+
+def only_yield_once_generator():
+    '''
+        so ofcase if only one yield, it can be next() called only once
+    '''
+    yield 1
+
+# 使用生成器
+gen = only_yield_once_generator()
+print(next(gen))  # print: 1
+print(next(gen))  # StopIteration
+print(next(gen))  # StopIteration
+
+''''''
